@@ -159,12 +159,16 @@
                 $(".humidity").append(h3, "Humidity: " + hum + "%")
                 $(".wind").append(h3, "Wind: " + wind + " MPH")
 
+
+                var queryURLUvIndex = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + currentData.coord.lat + "&lon=" + currentData.coord.lon;
+                $.ajax({
+                    url: queryURLUvIndex,
+                    method: "GET"
+                }).then(function (UVData) {
+                    console.log(UVData)
+                    var uv = UVData.value
+                    $(".UV").append(h3, "UV Index: " + uv)
+
 </body >
 
 </html >
-
-
-
-</body>
-
-</html>
