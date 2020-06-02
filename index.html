@@ -10,7 +10,6 @@
     <script src="https://kit.fontawesome.com/d2e3513db1.js" crossorigin="anonymous"></script>
 </head>
 
-
 <body>
     <div class="wrapper">
         <div class="row bg-dark text-white">
@@ -22,7 +21,6 @@
     <div class="row">
         <div class="col-sm-4">
             Search For a City:
-
             <div class="row">
                 <div class="col-sm-7 shadow-none">
 
@@ -39,7 +37,6 @@
             </div>
 
             <br>
-
             <div class="row">
                 <div class="col-sm-9 shadow-none">
                     <a href="#" class="list-group-item list-group-item-action">Austin</a>
@@ -101,10 +98,14 @@
                     <div class="humidityCard4"></div>
                 </div>
             </div>
-        </div>
-    </div>
-    </div>
 
+
+        </div>
+
+
+
+    </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
@@ -118,6 +119,20 @@
 
         var storedItem = localStorage.getItem("storedItem");
 
+        ////////////////////
+        // var cityInput = document.querySelector("#city");
+
+        // var searchButton = document.querySelector("#searchbutton")
+
+        // searchButton.addEventListener("click", function (event) {
+        //     event.preventDefault();
+        //     var Item = $("#city").val()
+
+        //     localStorage.setItem("storedItem", Item)
+        //     $("#city").val(localStorage.getItem("storedItem"));
+        // });
+
+
         $("#searchbutton").on("click", save)
         function save() {
             for (var i = 0; i < 10; i++) {
@@ -128,6 +143,9 @@
             }
 
         }
+
+
+
 
         $("#searchbutton").on("click", function () {
             var cityVal = $("#city").val()
@@ -151,6 +169,7 @@
                 var wind = currentData.wind.speed;
                 var date = moment(currentData.dt, "X").format("l")
 
+
                 h1.append(city, " " + date)
                 var image = $("<img>")
                 image.attr("src", "http://openweathermap.org/img/w/" + currentData.weather[0].icon + ".png")
@@ -169,6 +188,92 @@
                     var uv = UVData.value
                     $(".UV").append(h3, "UV Index: " + uv)
 
-</body >
+                    var queryFiveDay = "http://api.openweathermap.org/data/2.5/forecast?q=" + currentData.name + "&appid=" + APIKey;
+                    $.ajax({
+                        url: queryFiveDay,
+                        method: "GET"
+                    }).then(function (fiveDayForecast) {
+                        console.log(fiveDayForecast)
+                        var fiveDayUnfixed = (fiveDayForecast.list[0].main.temp - 273) * 1.80 + 32;
+                        var fiveDayZeroTemp = fiveDayUnfixed.toFixed(1);
+                        var fiveDayZeroHum = fiveDayForecast.list[0].main.humidity;
+                        var date0 = moment(fiveDayForecast.list[0].dt, "X").format("l")
+                        var image0 = $("<img>")
 
-</html >
+                        image0.attr("src", "http://openweathermap.org/img/w/" + fiveDayForecast.list[0].weather[0].icon + ".png")
+
+                        $(".temperatureCard").append(h3, "Temperature: " + fiveDayZeroTemp + "°F")
+                        $(".humidityCard").append(h3, "Humidity: " + fiveDayZeroHum + "%")
+                        $(".dateZero").append(h3, date0)
+                        $(".imageZero").append(h3, image0)
+
+
+                        var fiveDayUnfixed1 = (fiveDayForecast.list[8].main.temp - 273) * 1.80 + 32;
+                        var fiveDayOneTemp = fiveDayUnfixed1.toFixed(1);
+                        var fiveDayOneHum = fiveDayForecast.list[8].main.humidity;
+                        var date1 = moment(fiveDayForecast.list[8].dt, "X").format("l")
+                        var image1 = $("<img>")
+
+
+                        image1.attr("src", "http://openweathermap.org/img/w/" + fiveDayForecast.list[8].weather[0].icon + ".png")
+
+                        $(".temperatureCard1").append(h3, "Temperature: " + fiveDayOneTemp + "°F")
+                        $(".humidityCard1").append(h3, "Humidity: " + fiveDayOneHum + "%")
+                        $(".date1").append(h3, date1)
+                        $(".image1").append(h3, image1)
+
+                        var fiveDayUnfixed1 = (fiveDayForecast.list[16].main.temp - 273) * 1.80 + 32;
+                        var fiveDayTwoTemp = fiveDayUnfixed1.toFixed(1);
+                        var fiveDayTwoHum = fiveDayForecast.list[16].main.humidity;
+                        var date2 = moment(fiveDayForecast.list[16].dt, "X").format("l")
+                        var image2 = $("<img>")
+
+
+                        image2.attr("src", "http://openweathermap.org/img/w/" + fiveDayForecast.list[16].weather[0].icon + ".png")
+
+                        $(".temperatureCard2").append(h3, "Temperature: " + fiveDayTwoTemp + "°F")
+                        $(".humidityCard2").append(h3, "Humidity: " + fiveDayTwoHum + "%")
+                        $(".date2").append(h3, date2)
+                        $(".image2").append(h3, image2)
+
+                        var fiveDayUnfixed1 = (fiveDayForecast.list[24].main.temp - 273) * 1.80 + 32;
+                        var fiveDayThreeTemp = fiveDayUnfixed1.toFixed(1);
+                        var fiveDayThreeHum = fiveDayForecast.list[24].main.humidity;
+                        var date3 = moment(fiveDayForecast.list[24].dt, "X").format("l")
+                        var image3 = $("<img>")
+
+
+                        image3.attr("src", "http://openweathermap.org/img/w/" + fiveDayForecast.list[24].weather[0].icon + ".png")
+
+                        $(".temperatureCard3").append(h3, "Temperature: " + fiveDayThreeTemp + "°F")
+                        $(".humidityCard3").append(h3, "Humidity: " + fiveDayThreeHum + "%")
+                        $(".date3").append(h3, date3)
+                        $(".image3").append(h3, image3)
+
+                        var fiveDayUnfixed1 = (fiveDayForecast.list[32].main.temp - 273) * 1.80 + 32;
+                        var fiveDayFourTemp = fiveDayUnfixed1.toFixed(1);
+                        var fiveDayFourHum = fiveDayForecast.list[32].main.humidity;
+                        var date4 = moment(fiveDayForecast.list[32].dt, "X").format("l")
+                        var image4 = $("<img>")
+
+
+                        image4.attr("src", "http://openweathermap.org/img/w/" + fiveDayForecast.list[32].weather[0].icon + ".png")
+
+                        $(".temperatureCard4").append(h3, "Temperature: " + fiveDayFourTemp + "°F")
+                        $(".humidityCard4").append(h3, "Humidity: " + fiveDayFourHum + "%")
+                        $(".date4").append(h3, date4)
+                        $(".image4").append(h3, image4)
+
+
+                    })
+                })
+
+            })
+
+        })
+
+    </script>
+
+</body>
+
+</html>
