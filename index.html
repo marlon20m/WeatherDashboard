@@ -172,13 +172,13 @@
 
                 h1.append(city, " " + date)
                 var image = $("<img>")
-                image.attr("src", "http://openweathermap.org/img/w/" + currentData.weather[0].icon + ".png")
+                image.attr("src", "https://openweathermap.org/img/w/" + currentData.weather[0].icon + ".png")
                 $(".city").append(h1, image)
                 $(".temp").append(h3, "Temperature: " + temp + "°F")
                 $(".humidity").append(h3, "Humidity: " + hum + "%")
                 $(".wind").append(h3, "Wind: " + wind + " MPH")
 
-                var queryURLUvIndex = "http://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + currentData.coord.lat + "&lon=" + currentData.coord.lon;
+                var queryURLUvIndex = "https://api.openweathermap.org/data/2.5/uvi?appid=" + APIKey + "&lat=" + currentData.coord.lat + "&lon=" + currentData.coord.lon;
                 $.ajax({
                     url: queryURLUvIndex,
                     method: "GET"
@@ -186,7 +186,7 @@
                     console.log(UVData)
                     var uv = UVData.value
                     $(".UV").append(h3, "UV Index: " + uv)
-                    var queryFiveDay = "http://api.openweathermap.org/data/2.5/forecast?q=" + currentData.name + "&appid=" + APIKey;
+                    var queryFiveDay = "https://api.openweathermap.org/data/2.5/forecast?q=" + currentData.name + "&appid=" + APIKey;
                     $.ajax({
                         url: queryFiveDay,
                         method: "GET"
@@ -199,7 +199,7 @@
                         var image0 = $("<img>")
 
 
-                        image0.attr("src", "http://openweathermap.org/img/w/" + fiveDayForecast.list[0].weather[0].icon + ".png")
+                        image0.attr("src", "https://openweathermap.org/img/w/" + fiveDayForecast.list[0].weather[0].icon + ".png")
 
                         $(".temperatureCard").append(h3, "Temperature: " + fiveDayZeroTemp + "°F")
                         $(".humidityCard").append(h3, "Humidity: " + fiveDayZeroHum + "%")
@@ -214,7 +214,7 @@
                         var image1 = $("<img>")
 
 
-                        image1.attr("src", "http://openweathermap.org/img/w/" + fiveDayForecast.list[8].weather[0].icon + ".png")
+                        image1.attr("src", "https://openweathermap.org/img/w/" + fiveDayForecast.list[8].weather[0].icon + ".png")
 
                         $(".temperatureCard1").append(h3, "Temperature: " + fiveDayOneTemp + "°F")
                         $(".humidityCard1").append(h3, "Humidity: " + fiveDayOneHum + "%")
@@ -228,7 +228,7 @@
                         var image2 = $("<img>")
 
 
-                        image2.attr("src", "http://openweathermap.org/img/w/" + fiveDayForecast.list[16].weather[0].icon + ".png")
+                        image2.attr("src", "https://openweathermap.org/img/w/" + fiveDayForecast.list[16].weather[0].icon + ".png")
 
                         $(".temperatureCard2").append(h3, "Temperature: " + fiveDayTwoTemp + "°F")
                         $(".humidityCard2").append(h3, "Humidity: " + fiveDayTwoHum + "%")
@@ -242,7 +242,7 @@
                         var image3 = $("<img>")
 
 
-                        image3.attr("src", "http://openweathermap.org/img/w/" + fiveDayForecast.list[24].weather[0].icon + ".png")
+                        image3.attr("src", "https://openweathermap.org/img/w/" + fiveDayForecast.list[24].weather[0].icon + ".png")
 
                         $(".temperatureCard3").append(h3, "Temperature: " + fiveDayThreeTemp + "°F")
                         $(".humidityCard3").append(h3, "Humidity: " + fiveDayThreeHum + "%")
@@ -256,7 +256,7 @@
                         var image4 = $("<img>")
 
 
-                        image4.attr("src", "http://openweathermap.org/img/w/" + fiveDayForecast.list[32].weather[0].icon + ".png")
+                        image4.attr("src", "https://openweathermap.org/img/w/" + fiveDayForecast.list[32].weather[0].icon + ".png")
 
                         $(".temperatureCard4").append(h3, "Temperature: " + fiveDayFourTemp + "°F")
                         $(".humidityCard4").append(h3, "Humidity: " + fiveDayFourHum + "%")
