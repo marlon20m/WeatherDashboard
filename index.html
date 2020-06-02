@@ -105,6 +105,65 @@
     </div>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"></script>
+
+    <script>
+
+
+        var APIKey = "991caaa1fcad210398a1f71a5411e2dc";
+
+        var queryURL = "https://api.openweathermap.org/data/2.5/forecast?" + "q=" + $("#city").val() + "&appid=" + APIKey;
+
+        var storedItem = localStorage.getItem("storedItem");
+
+        $("#searchbutton").on("click", save)
+        function save() {
+            for (var i = 0; i < 10; i++) {
+                var Item = $("#city").val()
+
+                localStorage.setItem("storedItem" + i, Item)
+                $("#city").val(localStorage.getItem("storedItem" + i));
+            }
+
+        }
+
+        $("#searchbutton").on("click", function () {
+            var cityVal = $("#city").val()
+            // for (var i = 0; i < 100; i++) {
+            //     // var inputCity = $("<input>")
+            var queryURLCurrentData = "https://api.openweathermap.org/data/2.5/weather?q=" + cityVal + "&appid=" + APIKey;
+            console.log(queryURLCurrentData);
+            // inputCity.attr("id", "city")
+
+            $.ajax({
+                url: queryURLCurrentData,
+                method: "GET"
+            }).then(function (currentData) {
+                console.log(currentData)
+                var h1 = $("<h1>")
+                var h3 = $("<h3>")
+                var city = currentData.name
+                var tem = (currentData.main.temp - 273) * 1.80 + 32;
+                var temp = tem.toFixed(1);
+                var hum = currentData.main.humidity;
+                var wind = currentData.wind.speed;
+                var date = moment(currentData.dt, "X").format("l")
+
+                h1.append(city, " " + date)
+                var image = $("<img>")
+                image.attr("src", "http://openweathermap.org/img/w/" + currentData.weather[0].icon + ".png")
+                $(".city").append(h1, image)
+                $(".temp").append(h3, "Temperature: " + temp + "°F")
+                $(".humidity").append(h3, "Humidity: " + hum + "%")
+                $(".wind").append(h3, "Wind: " + wind + " MPH")
+
+</body >
+
+</html >
+
+
 
 </body>
 
