@@ -1,0 +1,27 @@
+h2 {
+    text-align: center;
+  }
+  
+  .list-group col-sm-4 {
+    margin-right: 16px;
+    padding-left: 16pt;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  .container {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 10pt;
+    display: flexbox;
+  }
+  
+  .input-group {
+    padding: 10pt;
+  }
+  
+  .card {
+    padding: auto;
+  }
+  
