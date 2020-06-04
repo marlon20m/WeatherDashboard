@@ -5,13 +5,22 @@ This is my Weather Dashboard where I was able to use various components of what 
 Provided elements to complete Weather Dashboard:
 
 [x] Composing a layout for my homework using JQuery, Ajax, JSON. Adding Bootstrap components to match the final rendition of the site layout provided.
+
 [x] Set up Jquery elements to append to site.
+
 [x] Set up local storage for cities
+
 [x] Add a moment.js source to locate date and time for cities
+
 [x] organize JS code into HTML and bootstrap
+
 [x] Add APIs for UV Index and 5 day
+
 [x] Generate APIs from Openweathermap.org to create the individual day forecast
+
 [x] Set up local storage for cities
+
+
 
 _User Story_
 AS A traveler
